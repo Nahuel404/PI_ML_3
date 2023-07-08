@@ -66,4 +66,40 @@ def peliculas_pais(pais:str):
     return {'pais': pais,
             'cantidad': cantidad}
 
+@app.get('/productoras_exitosas/{productora}')
+def productoras_exitosas(productora:str):
+    df_companias = df_completo[df_completo['companies']==productora]
+    df_companias = df_companias.drop_duplicates(subset=['id'])
 
+    total = int(df_companias['revenue'].sum())
+    cantidad = int(df_companias['companies'].value_counts())
+
+    return {'productora': productora,
+            'revenue_total': total,
+            'cantidad': cantidad}
+
+@app.get('/get_director/{nombre_director}')
+def get_director(nombre_director:str):
+    df_director = df_credits[df_credits['job'] == "Director"]
+    df_director = df_director.drop_duplicates(subset = ['id'])
+    df_director = df_director[['id', 'job', 'name_y']]
+    df_director = pd.merge(df_completo, df_director, on='id', how='inner')
+    df_director = df_director.drop_duplicates(subset=['id'])
+    df_director = df_director[df_director['name_y']==nombre_director]
+    df_director['release_date']=pd.to_datetime(df_director['release_date'])
+
+
+    total = df_director['return'].sum()
+    peliculas = list(df_director['title'])
+    fecha = list(df_director['release_date'].dt.year)
+    retorno_pelicula = list(df_director['return'])
+    budget_pelicula = list(df_director['budget'])
+    revenue_pelicula = list(df_director['revenue'])
+
+    return {'director': nombre_director,
+            'retorno_total_director': total,
+            'peliculas': peliculas,
+            'anio': fecha,
+            'retorno_pelicula': retorno_pelicula,
+            'budget_pelicula': budget_pelicula,
+            'revenue_pelicula': revenue_pelicula}
