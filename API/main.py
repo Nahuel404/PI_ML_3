@@ -103,3 +103,10 @@ def get_director(nombre_director:str):
             'retorno_pelicula': retorno_pelicula,
             'budget_pelicula': budget_pelicula,
             'revenue_pelicula': revenue_pelicula}
+
+@app.get('/recomendación/{pelicula}')
+def recomendacion(pelicula):
+    from modelo_de_recomendación import recomendar
+    respuesta = recomendar(pelicula)
+
+    return respuesta
