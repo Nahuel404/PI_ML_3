@@ -2,6 +2,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 import numpy as np
 
+df = pd.read_csv('../datasets/movies_dataset')
 
 def recomendar(pelicula):
     # Obtén el título de la película de entrada del usuario
