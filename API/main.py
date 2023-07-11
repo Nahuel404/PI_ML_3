@@ -1,10 +1,13 @@
 from fastapi import FastApi
 from starlette import responses
 from typing import Optional
+from google import drive
 import pandas as pd
 
-df_completo = pd.read_csv('../datasets/dataset_completo.csv')
-df_credits = pd.read_csv('../datasets/dataset_credits.csv')
+drive.mount('/content/drive')
+
+df_completo = pd.read_html('https://drive.google.com/file/d/1jzqQznmdmHMZaHsc-Fv9SmTdsn8MAwLy/view?usp=drive_link')
+df_credits = pd.read_html('https://drive.google.com/file/d/1-4fVvqGqfwZDffMQYEcHC9kv68meN8RC/view?usp=drive_link')
 
 app = FastApi()
 
