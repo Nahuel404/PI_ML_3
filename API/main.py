@@ -107,11 +107,11 @@ def get_director(nombre_director:str):
 
 @app.get('/recomendacion/{pelicula}')
 def recomendacion(pelicula):
-    from modelo_de_recomendación import recomendar
+    from modelo_de_recomendacion import recomendar
     respuesta = recomendar(pelicula)
 
     return respuesta
 
-if __name__ == "main":
+if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
