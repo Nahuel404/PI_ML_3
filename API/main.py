@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from starlette import responses
-from typing import Optional
 import pandas as pd
 
 
