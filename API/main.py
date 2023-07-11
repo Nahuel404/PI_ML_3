@@ -2,7 +2,6 @@ from fastapi import FastApi
 from starlette import responses
 from typing import Optional
 import pandas as pd
-import uvicorn
 
 
 df_completo = pd.read_html('https://drive.google.com/file/d/1jzqQznmdmHMZaHsc-Fv9SmTdsn8MAwLy/view?usp=drive_link')
@@ -112,3 +111,7 @@ def recomendacion(pelicula):
     respuesta = recomendar(pelicula)
 
     return respuesta
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
