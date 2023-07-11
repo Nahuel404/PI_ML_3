@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastApi
 from starlette import responses
 import pandas as pd
 
@@ -6,7 +6,7 @@ import pandas as pd
 df_completo = pd.read_html('https://drive.google.com/file/d/1jzqQznmdmHMZaHsc-Fv9SmTdsn8MAwLy/view?usp=drive_link')
 df_credits = pd.read_html('https://drive.google.com/file/d/1-4fVvqGqfwZDffMQYEcHC9kv68meN8RC/view?usp=drive_link')
 
-app = FastAPI()
+app = FastApi()
 
 @app.get("/")
 def home():
