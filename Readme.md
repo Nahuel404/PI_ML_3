@@ -1,154 +1,164 @@
-<p align=center><img src=https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png><p>
+# Mlops (Sistema de recomendacion)
 
-# <h1 align=center> **PROYECTO INDIVIDUAL Nº1** </h1>
+Machine Learning Operations (MLOps)
 
-# <h1 align=center>**`Machine Learning Operations (MLOps)`**</h1>
+## Descripción
 
-<p align="center">
-<img src="https://user-images.githubusercontent.com/67664604/217914153-1eb00e25-ac08-4dfa-aaf8-53c09038f082.png"  height=300>
-</p>
+Este proyecto se enfoca en el tratamiento de un Dataset de películas y el despliegue de distintos endpoints, incluyendo un modelo de recomendación de películas.
 
-¡Bienvenidos al primer proyecto individual de la etapa de labs! En esta ocasión, deberán hacer un trabajo situándose en el rol de un ***MLOps Engineer***.  
+## Características principales
 
-<hr>  
+- **FastAPI**: un framework de desarrollo web de alto rendimiento para construir los endpoints del proyecto ([enlace](https://fastapi.tiangolo.com)).
+- **Render**: una plataforma de alojamiento y despliegue de aplicaciones web, para implementar y alojar el proyecto ([enlace](https://render.com)).
+- **Datasets**: Se hace uso de los Datasets disponibles en el siguiente enlace: [Datasets](https://drive.google.com/drive/folders/1dBGCF1gq3cink9Kna7Iz3nn-JkLsxEeZ?usp=sharing) para el análisis y entrenamiento del modelo de recomendación de películas.
+- **Diccionario de datos**: El diccionario de datos utilizado se encuentra disponible en el siguiente enlace: [Diccionario de datos](https://docs.google.com/spreadsheets/d/1QkHH5er-74Bpk122tJxy_0D49pJMIwKLurByOfmxzho/edit#gid=0) y proporciona información sobre las variables y su significado en el Dataset **movies_dataset**.
 
-## **Descripción del problema (Contexto y rol a desarrollar)**
+## Requisitos
 
-## Contexto
+- Tener Python 3.x instalado en tu sistema.
+- Ejecutar el siguiente comando en la terminal para instalar las bibliotecas requeridas:
 
-Tienes tu modelo de recomendación dando unas buenas métricas :smirk:, y ahora, cómo lo llevas al mundo real? :eyes:
+  ```bash
+  pip install -r requirements.txt
+  ```
+<div style="display:flex; align-items:center;">
+  <div style="width:50%; padding-right:20px;">
+    <h2>Herramientas Utilizadas</h2>
+    <ul style="text-align: justify;">
+      <li><b>📊Scikit Learn</b>: Utilizado para vectorizar, tokenizar y calcular la similitud coseno.</li>
+      <li><b>🐍Python</b>: Lenguaje de programación principal utilizado en el desarrollo del proyecto.</li>
+      <li><b>💻Numpy</b>: Utilizado para realizar operaciones numéricas y manipulación de datos.</li>
+      <li><b>🐼Pandas</b>: Utilizado para la manipulación y análisis de datos estructurados.</li>
+      <li><b>📈Matplotlib</b>: Utilizado para la visualización de datos y generación de gráficos.</li>
+      <li><b>📳FastAPI</b>: Utilizado para crear la interfaz de la aplicación y procesar los parámetros de funciones.</li>
+      <li><b>🦄Uvicorn</b>: Servidor ASGI utilizado para ejecutar la aplicación FastAPI.</li>
+      <li><b>🌐Render</b>: Plataforma utilizada para el despliegue del modelo y la aplicación.</li>
+    </ul>
+  </div>
+</div>
+Asegúrate de estar ubicado en el directorio del proyecto donde se encuentra el archivo requirements.txt.
 
-El ciclo de vida de un proyecto de Machine Learning debe contemplar desde el tratamiento y recolección de los datos (Data Engineer stuff) hasta el entrenamiento y mantenimiento del modelo de ML según llegan nuevos datos.
+Este comando instalará automáticamente todas las bibliotecas necesarias en tu entorno virtual.
 
+Si aún no tienes Python instalado, puedes descargarlo e instalarlo desde el sitio oficial de Python: https://www.python.org.
+## Introducción:
 
-## Rol a desarrollar
+En este proyecto de Machine Learning, asumiré el rol de un Data Engineer y ML Operations y llevaré a cabo todos los procesos necesarios, desde el tratamiento y recolección de datos hasta el entrenamiento y despliegue del modelo de ML. El objetivo principal es desarrollar un sistema de recomendación de películas basado en técnicas de similitud y algoritmos de Machine Learning.
 
-Empezaste a trabajar como **`Data Scientist`** en una start-up que provee servicios de agregación de plataformas de streaming. El mundo es bello y vas a crear tu primer modelo de ML que soluciona un problema de negocio: un sistema de recomendación que aún no ha sido puesto en marcha! 
+## Objetivos del proyecto:
+---
+1. **Generación de API´s que procesan funciones que responden a consultas acerca de características de películas**
 
-Vas a sus datos y te das cuenta que la madurez de los mismos es poca (ok, es nula :sob:): Datos anidados, sin transformar, no hay procesos automatizados para la actualización de nuevas películas o series, entre otras cosas….  haciendo tu trabajo imposible :weary:. 
+2. **Deployment de un modelo de clasificación para un sistema de recomendación de películas**
 
-Debes empezar desde 0, haciendo un trabajo rápido de **`Data Engineer`** y tener un **`MVP`** (_Minimum Viable Product_) para la próxima semana! Tu cabeza va a explotar 🤯, pero al menos sabes cual es, conceptualmente, el camino que debes de seguir :exclamation:. Así que te espantas los miedos y te pones manos a la obra :muscle:
+---
+## Resumen del proyecto:
+---
+### 1. Proceso de Extracción, Transformación, Carga ( _enlace:_ [ETL ](https://github.com/EmilianoEmanuelSosa/PI_ML_OPS_Individual_Project/blob/main/ETL.ipynb))
 
-<p align="center">
-<img src="https://github.com/HX-PRomero/PI_ML_OPS/raw/main/src/DiagramaConceptualDelFlujoDeProcesos.png"  height=500>
-</p>
+En el archivo **ETL.py**, se llevó a cabo el proceso de extracción de datos de dos fuentes, la transformación de los datos para su limpieza y preprocesamiento, y finalmente la carga de los datos en un formato adecuado (archivo **ds_clean.csv**) para su posterior análisis y entrenamiento del modelo. (tambien ver **data_dictionary.md**)
 
-<sub> Nota que aqui se reflejan procesos no herramientas tecnologicas. Has el ejercicio de entender cual herramienta del stack corresponde a cual parte del proceso<sub/>
 
-## **Propuesta de trabajo (requerimientos de aprobación)**
+### 2. Implementación de API´s ( _enlace:_ [main.py ](https://github.com/EmilianoEmanuelSosa/PI_ML_OPS_Individual_Project/blob/main/main.py))
 
-**`Transformaciones`**:  Para este MVP no necesitas perfección, ¡necesitas rapidez! ⏩ Vas a hacer estas, ***y solo estas***, transformaciones a los datos:
+En el archivo **main.py**, se creará una interfaz utilizando la biblioteca **FastAPI y Uvicorn**. Esta interfaz permitirá a los usuarios interactuar con el modelo de Machine Learning, proporcionando los datos de entrada necesarios y obteniendo las predicciones correspondientes.
 
 
-+ Algunos campos, como **`belongs_to_collection`**, **`production_companies`** y otros (ver diccionario de datos) están anidados, esto es o bien tienen un diccionario o una lista como valores en cada fila, ¡deberán desanidarlos para poder  y unirlos al dataset de nuevo hacer alguna de las consultas de la API! O bien buscar la manera de acceder a esos datos sin desanidarlos.
+### 3. Análisis Exploratorio de Datos ( _enlace:_ [EDA ](https://github.com/EmilianoEmanuelSosa/PI_ML_OPS_Individual_Project/blob/main/EDA.ipynb))
 
-+ Los valores nulos de los campos **`revenue`**, **`budget`** deben ser rellenados por el número **`0`**.
-  
-+ Los valores nulos del campo **`release date`** deben eliminarse.
+En el notebook **EDA.ipynb**, se realizará un **`INFORME`** de Análisis exhaustivo de los datos y la factiblidad de modelos de clasificación para el caso en estudio. Esto incluirá la visualización de los datos, reducción de dimensionalidad, tratamiento de valores atípicos y la generación de conclusiones relevantes entorno a las variables y la elección del modelo.
 
-+ De haber fechas, deberán tener el formato **`AAAA-mm-dd`**, además deberán crear la columna **`release_year`** donde extraerán el año de la fecha de estreno.
 
-+ Crear la columna con el retorno de inversión, llamada **`return`** con los campos **`revenue`** y **`budget`**, dividiendo estas dos últimas **`revenue / budget`**, cuando no hay datos disponibles para calcularlo, deberá tomar el valor **`0`**.
+### 4. Desarrollo del Modelo de Machine Learning ( _enlace:_ [model.py ](https://github.com/EmilianoEmanuelSosa/PI_ML_OPS_Individual_Project/blob/main/main.py))
 
-+ Eliminar las columnas que no serán utilizadas, **`video`**,**`imdb_id`**,**`adult`**,**`original_title`**,**`vote_count`**,**`poster_path`** y **`homepage`**.
+En el archivo **model.py**, se implementará un modelo de Machine Learning utilizando **Similitud de cosenos**. Este modelo se entrenó utilizando los datos preprocesados y preparados durante el EDA (archivo **Data_movies_merged.csv**).Finalmente se realizó el deployemnt de la aplicación usando [RENDER ](https://pi-mlops-emiliano-sosa.onrender.com/docs).
 
-<br/>
 
-**`Desarrollo API`**:   Propones disponibilizar los datos de la empresa usando el framework ***FastAPI***. Las consultas que propones son las siguientes:
+URL: https://pi-mlops-emiliano-sosa.onrender.com/{nombre_director}
+Método: GET
+Parámetros:
+nombre_director: El nombre del director que deseas obtener información.
+Ejemplo de uso: https://pi-mlops-emiliano-sosa.onrender.com/get_director/Steven Spielberg
+API: recomendacion
+Esta API devuelve una lista de 5 películas similares al título especificado, en forma de recomendación.
 
-Deben crear 6 funciones para los endpoints que se consumirán en la API, recuerden que deben tener un decorador por cada una (@app.get(‘/’)).
-  
-+ def peliculas_mes(mes):
-    '''Se ingresa el mes y la funcion retorna la cantidad de peliculas que se estrenaron ese mes (nombre del mes, en str, ejemplo 'enero') historicamente'''
-    return {'mes':mes, 'cantidad':respuesta}
+URL: https://movies-repository.onrender.com/recomendacion/{titulo}
+Método: GET
 
-+ def peliculas_dia(dia):
-    '''Se ingresa el dia y la funcion retorna la cantidad de peliculas que se estrenaron ese dia (de la semana, en str, ejemplo 'lunes') historicamente'''
-    return {'dia':dia, 'cantidad':respuesta}
+### API: `peliculas_idioma`
 
-+ def franquicia(franquicia):
-    '''Se ingresa la franquicia, retornando la cantidad de peliculas, ganancia total y promedio'''
-    return {'franquicia':franquicia, 'cantidad':respuesta, 'ganancia_total':respuesta, 'ganancia_promedio':respuesta}
+Esta API devuelve la cantidad de películas en el idioma especificado.
 
-+ def peliculas_pais(pais):
-    '''Ingresas el pais, retornando la cantidad de peliculas producidas en el mismo'''
-    return {'pais':pais, 'cantidad':respuesta}
+- **URL**: `https://pi-mlops-emiliano-sosa.onrender.com/peliculas_idioma/{idioma}`
+- **Método**: GET
+- **Parámetros**:
+  - `idioma`: El idioma de la cantidad de películas que deseas obtener.
+- **Ejemplo de uso**: `https://pi-mlops-emiliano-sosa.onrender.com/peliculas_idioma/en`
 
-+ def productoras(productora):
-    '''Ingresas la productora, retornando la ganancia total y la cantidad de peliculas que produjeron'''
-    return {'productora':productora, 'ganancia_total':respuesta, 'cantidad':respuesta}
+### API: `peliculas_duracion`
 
-+ def retorno(pelicula):
-    '''Ingresas la pelicula, retornando la inversion, la ganancia, el retorno y el año en el que se lanzo'''
-    return {'pelicula':pelicula, 'inversion':respuesta, 'ganacia':respuesta,'retorno':respuesta, 'anio':respuesta}
+Esta API devuelve el nombre, su duración en minutos y el año de estreno de una película específica.
 
-+ def recomendacion('titulo'):
-    '''Ingresas un nombre de pelicula y te recomienda las similares en una lista de 5 valores'''
-    return {'lista recomendada': respuesta}
+- **URL**: `https://pi-mlops-emiliano-sosa.onrender.com/peliculas_duracion/{pelicula}`
+- **Método**: GET
+- **Parámetros**:
+  - `pelicula`: El nombre de la película para la cual deseas obtener la duración.
+- **Ejemplo de uso**: `https://pi-mlops-emiliano-sosa.onrender.com/peliculas_duracion/Jumanji`
 
+### API: `franquicia`
 
-<br/>
+Esta API devuelve información sobre una franquicia de películas, su nombre, cantidad de películas, ganancias totales y ganancias promedio.
 
+- **URL**: `https://pi-mlops-emiliano-sosa.onrender.com/franquicia/{franquicia}`
+- **Método**: GET
+- **Parámetros**:
+  - `franquicia`: El nombre de la franquicia de películas que deseas obtener información. Todas estas franquicias terminan con **Collection**.
+- **Ejemplo de uso**: `https://pi-mlops-emiliano-sosa.onrender.com/franquicia/Toy Story Collection`
 
-**`Deployment`**: Conoces sobre [Render](https://render.com/docs/free#free-web-services) y tienes un [tutorial de Render](https://github.com/HX-FNegrete/render-fastapi-tutorial) que te hace la vida mas facil :smile: . Tambien podrias usar [Railway](https://railway.app/), o cualquier otro servicio que permita que la API pueda ser consumida desde la web.
+### API: `peliculas_pais`
 
-<br/>
+Esta API devuelve la cantidad de películas producidas en el pais especificado.
 
-**`Análisis exploratorio de los datos`**: _(Exploratory Data Analysis-EDA)_
+- **URL**: `https://pi-mlops-emiliano-sosa.onrender.com/peliculas_pais/{pais}`
+- **Método**: GET
+- **Parámetros**:
+  - `pais`: El nombre del país para el cual deseas obtener la cantidad de películas producidas.
+- **Ejemplo de uso**: `https://pi-mlops-emiliano-sosa.onrender.com/peliculas_pais/United States of America`
 
-Ya los datos están limpios, ahora es tiempo de investigar las relaciones que hay entre las variables de los datasets, ver si hay outliers o anomalías (que no tienen que ser errores necesariamente :eyes: ), y ver si hay algún patrón interesante que valga la pena explorar en un análisis posterior. Las nubes de palabras dan una buena idea de cuáles palabras son más frecuentes en los títulos, ¡podría ayudar al sistema de recomendación! Sabes que puedes apoyarte en librerías como _pandas profiling, missingno, sweetviz, autoviz_, entre otros y sacar de allí tus conclusiones 😉
+### API: `productoras_exitosas`
 
-**`Sistema de recomendación`**: 
+Esta API devuelve información sobre una productora, su nombre, ganancias totales y la cantidad de peliculas producidas.
 
-Una vez que toda la data es consumible por la API, está lista para consumir por los departamentos de Analytics y Machine Learning, y nuestro EDA nos permite entender bien los datos a los que tenemos acceso, es hora de entrenar nuestro modelo de machine learning para armar un sistema de recomendación de películas. El EDA debería incluir gráficas interesantes para extraer datos, como por ejemplo una nube de palabras con las palabras más frecuentes en los títulos de las películas. Éste consiste en recomendar películas a los usuarios basándose en películas similares, por lo que se debe encontrar la similitud de puntuación entre esa película y el resto de películas, se ordenarán según el score de similaridad y devolverá una lista de Python con 5 valores, cada uno siendo el string del nombre de las películas con mayor puntaje, en orden descendente. Debe ser deployado como una función adicional de la API anterior y debe llamarse get_recommendation(titulo: str).
+- **URL**: `https://pi-mlops-emiliano-sosa.onrender.com/productoras_exitosas/{productora}`
+- **Método**: GET
+- **Parámetros**:
+  - `productora`: El nombre de la productora de películas que deseas obtener información.
+- **Ejemplo de uso**: `https://pi-mlops-emiliano-sosa.onrender.com/productoras_exitosas/Pixar Animation Studios`
 
-<br/>
+### API: `get_director`
 
-**`Video`**: Necesitas que al equipo le quede claro que tus herramientas funcionan realmente! Haces un video mostrando el resultado de las consultas propuestas y de tu modelo de ML entrenado!
+Esta API devuelve información sobre un director de películas, su nombre, el retorno total en sus peliculas y un diccionario con informacion de sus peliculas.
 
-<sub> **Spoiler**: El video NO DEBE durar mas de ***7 minutos*** y DEBE mostrar las consultas requeridas en funcionamiento desde la API** y una breve explicacion del modelo utilizado para el sistema de recomendacion. <sub/>
+- **URL**: `[https://movies-repository.onrender.com](https://pi-mlops-emiliano-sosa.onrender.com)/get_director/{nombre_director}`
+- **Método**: GET
+- **Parámetros**:
+  - `nombre_director`: El nombre del director que deseas obtener información.
+- **Ejemplo de uso**: `https://pi-mlops-emiliano-sosa.onrender.com/get_director/Steven Spielberg`
 
-<br/>
+### API: `recomendacion`
 
-## **Criterios de evaluación**
+Esta API devuelve una lista de 5 películas similares al título especificado, en forma de recomendación.
 
-**`Código`**: Prolijidad de código, uso de clases y/o funciones, en caso de ser necesario, código comentado. 
+- **URL**: `https://pi-mlops-emiliano-sosa.onrender.com/recomendacion/{titulo}`
+- **Método**: GET
+- **Parámetros**:
+  - `titulo`: El título de la película para la cual deseas obtener recomendaciones.
+- **Ejemplo de uso**: `https://pi-mlops-emiliano-sosa.onrender.com/Toy Story`
 
-**`Repositorio`**: Nombres de archivo adecuados, uso de carpetas para ordenar los archivos, README.md presentando el proyecto y el trabajo realizado
+---
 
-**`Cumplimiento`** de los requerimientos de aprobación indicados en el apartado `Propuesta de trabajo`
 
-NOTA: Recuerde entregar el link de acceso al video. Puede alojarse en YouTube, Drive o cualquier plataforma de almacenamiento. **Verificar que sea de acceso público**.
-
-<br/>
-Aqui te sintetizamos que es lo que consideramos un MVP aprobatorio, y la diferencia con un producto completo.
-
-
-
-<p align="center">
-<img src="https://github.com/HX-PRomero/PI_ML_OPS/raw/main/src/MVP_MLops.PNG"  height=250>
-</p>
-
-
-## **Fuente de datos**
-
-+ [Dataset](https://drive.google.com/file/d/1Rp7SNuoRnmdoQMa5LWXuK4i7W1ILblYb/view?usp=sharing): Archivo con los datos que requieren ser procesados, tengan en cuenta que hay datos que estan anidados (un diccionario o una lista como valores en la fila).
-+ [Diccionario de datos](https://docs.google.com/spreadsheets/d/1QkHH5er-74Bpk122tJxy_0D49pJMIwKLurByOfmxzho/edit#gid=0): Diccionario con algunas descripciones de las columnas disponibles en el dataset.
-<br/>
-
-## **Material de apoyo**
-
-En este mismo repositorio podras encontrar algunos [links de ayuda](hhttps://github.com/HX-PRomero/PI_ML_OPS/raw/main/Material%20de%20apoyo.md). Recuerda que no son los unicos recursos que puedes utilizar!
-
-
-
-  
-<br/>
-
-## **Deadlines importantes**
-
-+ Apertura de formularios de entrega de proyectos: **Lunes 15, 10:00 hs gmt -3**
-
-+ Cierre de formularios de entrega de proyectos: **Martes 16, 16:00hs gmt-3**
-  
-+ Demo: **Martes 16, 16:00hs gmt-3*** 
+Parámetros:
+titulo: El título de la película para la cual deseas obtener recomendaciones.
+Ejemplo de uso: https://movies-repository.onrender.com/recomendacion/Toy Story
+Copy code
